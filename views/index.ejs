@@ -1,0 +1,19 @@
+<% layout('layout') %>
+<header class="main__header">
+    <button class="main__add-new-button button input">&plus;</button>
+    <form action="" class="main__search-bar">
+        <input type="search" class="search__input input">
+        <button class="button--transparent search__button input"><%- include('partials/svgs/search') %></button>
+    </form>
+</header>
+<article class="main__body">
+    <section class="main__column container to-do">
+        <h1>To-Do</h1>
+    </section>
+    <section class="main__column container doing">
+        <h1>Doing</h1>
+    </section>
+    <section class="main__column container done">
+        <h1>Done</h1>
+    </section>
+</article>

@@ -1,0 +1,93 @@
+main {
+    margin-left: var(--sidebar-width);
+    width: 100%;
+    padding: 2rem 0.5rem 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main__add-new-button {
+    font-size: 32px;
+    text-align: center;
+    background: var(--gradient);
+    color: var(--black);
+    width: 3.5rem;
+}
+
+.main__add-new-button:hover {
+    color: var(--white);
+    text-shadow: 1px 1px var(--black);
+}
+
+.main__search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search__input {
+    min-width: 30rem;
+    font-size: 28px;
+    border: 2px solid var(--black);
+    border-radius: var(--br-sm);
+}
+
+.search__input:hover {
+    margin: 0 0.5rem;
+}
+
+.search__button {
+    text-align: center;
+}
+
+.search-icon {
+    width: 35px;
+}
+
+/* Main Body */
+.main__body {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.main__column {
+    min-width: 30%;
+    min-height: 82vh;
+    border: 2px solid var(--black);
+    border-radius: var(--br-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.to-do {
+    background: var(--red);
+}
+
+.doing {
+    background: var(--yellow);
+}
+
+.done {
+    background: var(--green);
+}
+
+.main__column h1 {
+    font-size: 45px;
+    padding: 0 1.5rem 0.4rem 1.5rem;
+    border-bottom: 3px solid var(--black);
+}
