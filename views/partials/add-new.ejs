@@ -1,0 +1,47 @@
+<div class="container__add-new to-do__modal addNewModal" id="addNewModal">
+    <header class="modal__header">
+        <h1>Add new To-Do</h1>
+        <button data-close-button class="button--transparent button--close modal__close-button">&times;</button>
+    </header>
+    <form class="modal__body" action="/" method="post">
+        <div class="modal__input-container container__title">
+            <label class="modal__input__label" for="title">Title</label>
+            <input class="modal__input" type="text" name="title" id="title">
+        </div>
+        <div class="modal__input-container container__ex-date">
+            <label class="modal__input__label" for="exDate">Expiration Date</label>
+            <input class="modal__input" type="date" name="exDate" id="exDate">
+        </div>
+        <div class="modal__input-container container__description">
+            <label class="modal__input__label" for="description">Expiration Date</label>
+            <textarea class="modal__input" type="date" name="description" id="description" style="resize: none;"></textarea>
+        </div>
+        <div class="modal__input-container container__status">
+            <label class="modal__input__label" for="status">Status</label>
+            <select class="modal__input" name="status" id="status">
+                <option value="to-do">To-Do</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>  
+            </select>
+        </div>
+        <div class="modal__input-container container__importance">
+            <label class="modal__input__label" for="importance">Importance</label>
+            <select class="modal__input" name="importance" id="importance">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>  
+            </select>
+        </div>
+        <div class="modal__input-container container__tags">
+            <label class="modal__input__label">Tags</label>
+            <input class="modal__input add-new modal__tags-input" maxlength="25" type="text" placeholder="5 tags max">
+            <ul class="add-new tags__list">
+            </ul>
+        </div>
+        <input class="noDisplay" id="add-new-tags__input--hidden" name="tags" type="text">
+        <div class="modal__input-container container__modal-button">
+            <button type="submit" class="button input modal__submit">Add New</button>
+        </div>
+    </form>
+</div>
+<div class="overlay" id="overlayAddNew"></div>

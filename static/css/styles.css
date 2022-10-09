@@ -6,7 +6,7 @@
     --success: #00FF66;
 
     --black: #2E373B;
-    --muted: #979B9D;
+    --muted: #c5c5c6;
     --white: #F5F5F5;
 
     --red: #FF6666;
@@ -32,7 +32,7 @@
     --success: #00FF66;
 
     --black: #F5F5F5;
-    --muted: #979B9D;
+    --muted: #c5c5c6;
     --white: #2E373B;
 
     --red: #FF6666;
@@ -93,4 +93,61 @@ body {
 
 .input:hover {
     scale: 1.05;
+}
+
+.to-do__modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 2px solid var(--black);
+    border-radius: var(--br-bg);
+    z-index: 10;
+    background: var(--white);
+    width: 40rem;
+    max-width: 80%;
+    transition: var(--transition);
+}
+
+.to-do__modal.active {
+    transform: translate(-42%, -50%) scale(1);
+}
+
+.overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 9;
+}
+
+.button--close:hover {
+    color: var(--muted);
+}
+
+.low {
+    border: 7px solid var(--azure);
+    outline: 2px solid var(--black);
+    outline-offset: -8px;
+}
+
+.medium {
+    border: 7px solid var(--blue);
+    outline: 2px solid var(--black);
+    outline-offset: -8px;
+}
+
+.high {
+    border: 7px solid var(--purple);    
+    outline: 2px solid var(--black);
+    outline-offset: -8px;
 }

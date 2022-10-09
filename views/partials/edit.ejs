@@ -1,0 +1,47 @@
+<div class="container__edit to-do__modal editModal" id="editModal" data-entry-target="<%= entry._id %>">
+    <header class="modal__header">
+        <h1>Edit To-Do</h1>
+        <button data-close-button class="button--transparent button--close modal__close-button">&times;</button>
+    </header>
+    <form class="modal__body" action="/<%= entry._id %>?_method=PATCH" method="post">
+        <div class="modal__input-container container__title">
+            <label class="modal__input__label" for="title">Title</label>
+            <input class="modal__input" type="text" name="title" id="title" value="<%= entry.title %>">
+        </div>
+        <div class="modal__input-container container__ex-date">
+            <label class="modal__input__label" for="exDate">Expiration Date</label>
+            <input class="modal__input" type="date" name="exDate" id="exDate" value="<%= entry.exDate %>">
+        </div>
+        <div class="modal__input-container container__description">
+            <label class="modal__input__label" for="description">Expiration Date</label>
+            <textarea class="modal__input" type="date" name="description" id="description" style="resize: none;"><%= entry.description %></textarea>
+        </div>
+        <div class="modal__input-container container__status">
+            <label class="modal__input__label" for="status">Status</label>
+            <select class="modal__input" name="status" id="status">
+                <option value="to-do" <%= entry.status == "to-do" ? "selected" : "" %>>To-Do</option>
+                <option value="doing" <%= entry.status == "doing" ? "selected" : "" %>>Doing</option>
+                <option value="done" <%= entry.status == "done" ? "selected" : "" %>>Done</option>  
+            </select>
+        </div>
+        <div class="modal__input-container container__importance">
+            <label class="modal__input__label" for="importance">Importance</label>
+            <select class="modal__input" name="importance" id="importance">
+                <option value="low" <%= entry.importance == "low" ? "selected" : "" %>>Low</option>
+                <option value="medium" <%= entry.importance == "medium" ? "selected" : "" %>>Medium</option>
+                <option value="high" <%= entry.importance == "high" ? "selected" : "" %>>High</option>  
+            </select>
+        </div>
+        <div class="modal__input-container container__tags" data-entry="<%= entry._id %>">
+            <label class="modal__input__label">Tags</label>
+            <input class="modal__input edit modal__tags-input" data-entry="<%= entry._id %>" maxlength="25" type="text" placeholder="5 tags max">
+            <ul class="edit tags__list" data-entry="<%= entry._id %>">
+            </ul>
+        </div>
+        <input class="noDisplay" data-entry="<%= entry._id %>" id="edit-tags__input--hidden" name="tags" type="text">
+        <div class="modal__input-container container__modal-button">
+            <button type="submit" class="button input modal__submit">Update</button>
+        </div>
+    </form>
+</div>
+<div class="overlay" id="overlayEdit"></div>

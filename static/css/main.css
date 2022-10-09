@@ -1,6 +1,6 @@
 main {
     margin-left: var(--sidebar-width);
-    width: 100%;
+    width: 93%;
     padding: 2rem 0.5rem 0.5rem 0.5rem;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@ main {
 }
 
 .main__column {
-    min-width: 30%;
+    min-width: 27%;
     min-height: 82vh;
     border: 2px solid var(--black);
     border-radius: var(--br-bg);
@@ -72,6 +72,10 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
+}
+
+.main__column h1 {
+    font-weight: 700;
 }
 
 .to-do {
@@ -90,4 +94,83 @@ main {
     font-size: 45px;
     padding: 0 1.5rem 0.4rem 1.5rem;
     border-bottom: 3px solid var(--black);
+}
+
+.container__entries {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.entry {
+    background: var(--white);
+    margin: 0.5rem 0;
+    border-radius: var(--br-bg);
+    padding: 0.7rem 0.7rem 0.3rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.entry__button--delete {
+    font-size: 24px;
+    margin-left: auto;
+}
+
+.entry__delete-form {
+    height: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.entry__container__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.entry__exDate {
+    font-size: 16px;
+}
+
+.entry__buttons:hover {
+    text-decoration: underline;
+    color: var(--muted);
+}
+
+.entry__tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.entry__tag {
+    background: var(--muted);
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--black);
+    border-radius: var(--br-sm);
+}
+
+.entry--small button {
+    align-self: flex-end;
+}
+
+.entry__datetimes {
+    color: var(--black);
+}
+
+.entry__datetimes, 
+.entry__buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.entry__description {
+    word-wrap: break-word;
 }

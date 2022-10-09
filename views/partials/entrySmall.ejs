@@ -1,0 +1,15 @@
+<div class="entry entry--small <%= entry.importance %>">
+    <form action="/<%= entry._id %>?_method=DELETE"  method="post" class="entry__delete-form">
+        <button class="entry__button--delete button--transparent button--close">&times;</button>
+    </form>
+    <div class="entry__container__title">
+        <h2 class="entry__title"><%= entry.title %></h2>
+        <small class="entry__exDate"><%= entry.exDate %></small>
+    </div>
+    <div class="entry__tags">
+        <% for(let tag of entry.tags) { %> 
+            <div class="entry__tag"><%= tag %></div>
+        <% } %>
+    </div>
+    <button class="entry__view-more entry__buttons button--transparent">View More</button>
+</div>

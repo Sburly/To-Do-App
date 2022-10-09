@@ -1,19 +1,53 @@
 <% layout('layout') %>
+<%- partial("partials/add-new") %>
 <header class="main__header">
-    <button class="main__add-new-button button input">&plus;</button>
+    <button data-modal-target="#addNewModal" class="main__add-new-button button input">&plus;</button>
     <form action="" class="main__search-bar">
         <input type="search" class="search__input input">
-        <button class="button--transparent search__button input"><%- include('partials/svgs/search') %></button>
+        <button class="button--transparent search__button input"><%- partial("partials/svgs/search") %></button>
     </form>
 </header>
 <article class="main__body">
     <section class="main__column container to-do">
         <h1>To-Do</h1>
+        <div class="container__entries">
+            <% for(let entry of entries) { %> 
+                <%- partial('partials/edit', { entry }) %>
+                <% if(entry.status == "to-do") { %>
+                    <!-- Entry Small -->
+                    <%- partial('partials/entrySmall', { entry }) %>
+                    <!-- Entry Big -->
+                    <%- partial('partials/entryBig', { entry }) %>
+                <% } %>
+            <% } %>
+        </div>
     </section>
     <section class="main__column container doing">
         <h1>Doing</h1>
+        <div class="container__entries">
+            <% for(let entry of entries) { %> 
+                <%- partial('partials/edit', { entry }) %>
+                <% if(entry.status == "doing") { %>
+                    <!-- Entry Small -->
+                    <%- partial('partials/entrySmall', { entry }) %>
+                    <!-- Entry Big -->
+                    <%- partial('partials/entryBig', { entry }) %>
+                <% } %>
+            <% } %>
+        </div>
     </section>
     <section class="main__column container done">
         <h1>Done</h1>
+        <div class="container__entries">
+            <% for(let entry of entries) { %> 
+                <%- partial('partials/edit', { entry }) %>
+                <% if(entry.status == "done") { %>
+                    <!-- Entry Small -->
+                    <%- partial('partials/entrySmall', { entry }) %>
+                    <!-- Entry Big -->
+                    <%- partial('partials/entryBig', { entry }) %>
+                <% } %>
+            <% } %>
+        </div>
     </section>
 </article>

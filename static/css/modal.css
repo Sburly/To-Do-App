@@ -1,0 +1,148 @@
+.to-do__modal {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 1.5rem;
+}
+
+.modal__close-button {
+    font-size: 32px;
+    padding-bottom: 1rem;
+}
+
+.modal__body {
+    display: grid;
+    grid-template-areas: 
+    "title status"
+    "exDate importance"
+    "description description"
+    "tags tags"
+    "button button";
+    gap: 1.2rem;
+    padding: 0 1rem;
+}
+
+.container__title {
+    grid-area: title;
+}
+
+.container__status {
+    grid-area: status;
+}
+
+.container__status select {
+    text-align: center;
+}
+
+.container__exDate {
+    grid-area: exDate;
+}
+
+.container__ex-date input {
+    text-align: center;
+}
+
+.container__importance {
+    grid-area: importance;
+}
+
+.container__importance select {
+    text-align: center;
+}
+
+.container__description {
+    grid-area: description;
+}
+
+.container__tags {
+    height: fit-content;
+    grid-area: tags;
+}
+
+.container__modal-button {
+    grid-area: button;
+}
+
+.modal__input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__input {
+    width: 100%;
+    font-size: 18px;
+    border: 2px solid var(--black);
+    color: var(--black);
+    background: var(--white);
+    border-radius: var(--br-sm);
+    padding: 0.3rem;
+}
+
+.modal__input__label {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tags__list {
+    margin-top: 0.5rem;
+    padding: 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.tags__list .tag {
+    list-style-type: none;
+    border: 1px solid var(--black);
+    padding: 0 0.1rem 0 0.3rem;
+    border-radius: var(--br-sm);
+    margin: 0.3rem 0.3rem 0.3rem 0;
+    display: flex;
+    align-items: center;
+    background: var(--muted);
+}
+
+.tag .button--close {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.tag .button--close:hover {
+    color: var(--white);
+}
+
+.modal__tags-input input {
+    flex: 1;
+    font-size: 18px;
+    padding: 0.5rem;
+    outline: none;
+    border: 0;
+    background-color: var(--white);
+}
+
+.modal__submit {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    text-align: center;
+    background: var(--gradient);
+    color: var(--black);
+    transition: var(--transition);
+}
+
+.modal__submit:hover {
+    color: var(--white);
+    text-shadow: 1px 1px var(--black);
+}

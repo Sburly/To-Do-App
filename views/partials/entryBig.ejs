@@ -1,0 +1,26 @@
+<div class="entry--big <%= entry.importance %> noDisplay">
+    <form action="/<%= entry._id %>?_method=DELETE"  method="post" class="entry__delete-form">
+        <button class="button--transparent button--close entry__button--delete">&times;</button>
+    </form>
+    <h2 class="entry__title"><%= entry.title %></h2>
+    <p class="entry__description"><%= entry.description %></p>
+    <div class="entry__tags">
+        <% for(let tag of entry.tags) { %> 
+            <div class="entry__tag"><%= tag %></div>
+        <% } %>
+    </div>
+    <div class="entry__datetimes">
+        <small class="entry__exDate--big"><%= entry.exDate %></small>
+        <small class="entry__time-left"></small>
+    </div>
+    <div class="entry__buttons-container">
+        <button 
+            data-modal-target="#editModal" 
+            class="entry__edit entry__buttons button--transparent" 
+            id="<%= entry.id %>" 
+            data-entry-tags="<%= entry.tags %>">
+            Edit
+        </button>
+        <button class="entry__view-less entry__buttons button--transparent">View Less</button>
+    </div>
+</div>
