@@ -10,42 +10,48 @@
 <article class="main__body">
     <section class="main__column container to-do">
         <h1>To-Do</h1>
-        <div class="container__entries">
+        <div class="container__entries" id="to-do">
             <% for(let entry of entries) { %> 
                 <%- partial('partials/edit', { entry }) %>
                 <% if(entry.status == "to-do") { %>
-                    <!-- Entry Small -->
-                    <%- partial('partials/entrySmall', { entry }) %>
-                    <!-- Entry Big -->
-                    <%- partial('partials/entryBig', { entry }) %>
+                    <div class="draggable" draggable="true" data-entry="<%= entry._id %>">
+                        <!-- Entry Small -->
+                        <%- partial('partials/entrySmall', { entry }) %>
+                        <!-- Entry Big -->
+                        <%- partial('partials/entryBig', { entry }) %>
+                    </div>
                 <% } %>
             <% } %>
         </div>
     </section>
     <section class="main__column container doing">
         <h1>Doing</h1>
-        <div class="container__entries">
+        <div class="container__entries" id="doing">
             <% for(let entry of entries) { %> 
                 <%- partial('partials/edit', { entry }) %>
                 <% if(entry.status == "doing") { %>
-                    <!-- Entry Small -->
-                    <%- partial('partials/entrySmall', { entry }) %>
-                    <!-- Entry Big -->
-                    <%- partial('partials/entryBig', { entry }) %>
+                    <div class="draggable" draggable="true" data-entry="<%= entry._id %>">
+                        <!-- Entry Small -->
+                        <%- partial('partials/entrySmall', { entry }) %>
+                        <!-- Entry Big -->
+                        <%- partial('partials/entryBig', { entry }) %>
+                    </div>
                 <% } %>
             <% } %>
         </div>
     </section>
     <section class="main__column container done">
         <h1>Done</h1>
-        <div class="container__entries">
+        <div class="container__entries" id="done">
             <% for(let entry of entries) { %> 
                 <%- partial('partials/edit', { entry }) %>
                 <% if(entry.status == "done") { %>
-                    <!-- Entry Small -->
-                    <%- partial('partials/entrySmall', { entry }) %>
-                    <!-- Entry Big -->
-                    <%- partial('partials/entryBig', { entry }) %>
+                    <div class="draggable" draggable="true" data-entry="<%= entry._id %>">
+                        <!-- Entry Small -->
+                        <%- partial('partials/entrySmall', { entry }) %>
+                        <!-- Entry Big -->
+                        <%- partial('partials/entryBig', { entry }) %>
+                    </div>
                 <% } %>
             <% } %>
         </div>

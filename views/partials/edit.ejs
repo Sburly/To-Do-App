@@ -3,7 +3,7 @@
         <h1>Edit To-Do</h1>
         <button data-close-button class="button--transparent button--close modal__close-button">&times;</button>
     </header>
-    <form class="modal__body" action="/<%= entry._id %>?_method=PATCH" method="post">
+    <form class="modal__body" action="/<%= entry._id %>?_method=PUT" method="post">
         <div class="modal__input-container container__title">
             <label class="modal__input__label" for="title">Title</label>
             <input class="modal__input" type="text" name="title" id="title" value="<%= entry.title %>">

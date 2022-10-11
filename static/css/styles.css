@@ -151,3 +151,11 @@ body {
     outline: 2px solid var(--black);
     outline-offset: -8px;
 }
+
+.draggable {
+    cursor: move;
+}
+
+.dragging {
+    opacity: 0.5;
+}

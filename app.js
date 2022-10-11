@@ -5,6 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const engine = require("ejs-locals");
+const bodyParser = require('body-parser');
 // Imports
 const Entry = require("./models/entry");
 
@@ -18,6 +19,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // MongoDatabase Connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -50,10 +53,14 @@ app.post("/", async (req, res) => {
     res.redirect("/");
 });
 
-app.patch("/:id", async (req, res) => {
+app.put("/:id", async (req, res) => {
     req.body.tags = tagsFormat(req.body.tags);
     await Entry.findByIdAndUpdate(req.params.id, {...req.body}, { new: true });
     res.redirect("/");
+});
+
+app.patch("/:id", async (req, res) => {
+    const entry = await Entry.findByIdAndUpdate(req.body.id, { "status" : req.body.newStatus });
 });
 
 app.delete("/:id", async (req, res) => {
