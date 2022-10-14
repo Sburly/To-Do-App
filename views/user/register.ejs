@@ -1,0 +1,17 @@
+<% layout('../layout') %>
+<form action="/register" method="POST" class="container__form">
+    <h1 class="form__title">Register</h1>
+    <div class="input-container">
+        <label class="form__input__label" for="email">Email</label>
+        <input class="form__input" type="text" name="email" id="email">
+    </div>
+    <div class="input-container">
+        <label class="form__input__label" for="username">Username</label>
+        <input class="form__input" type="text" name="username" id="username">
+    </div>
+    <div class="input-container">
+        <label class="form__input__label" for="password">Password</label>
+        <input class="form__input" type="password" name="password" id="password">
+    </div>
+    <button class="button input">Register</button>
+</form>

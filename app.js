@@ -6,8 +6,16 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const engine = require("ejs-locals");
 const bodyParser = require('body-parser');
+const session = require("express-session");
+const MongoDBStore = require("connect-mongo");
+const flash = require("connect-flash");
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 // Imports
-const Entry = require("./models/entry");
+const ExpressError = require("./utilities/ExpressError");
+const entryRoutes = require("./routes/entries");
+const userRoutes = require("./routes/users");
+const User = require("./models/user");
 
 // Express App Settings
 const app = express();
@@ -21,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(flash());
 
 // MongoDatabase Connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -31,42 +40,56 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => console.log("Database connected"));
 
-function tagsFormat(input) {
-    tags = [];
-    for(let tag of input.split("%,%")){
-        if (tag != "") {
-            tags.push(tag);
-        };
-    };
-    return tags
-}
+// Mongo Session
+const store = MongoDBStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    secret: process.env.SECRET_KEY,
+    touchAfter: 24 * 3600
+});
+store.on("error", function(){
+    console.log("Store Error", e);
+});
+const sessionConfig = {
+    store,
+    name: "session", 
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + (1000 * 360 * 24 * 7),
+        maxAge: Date.now() + (1000 * 360 * 24 * 7),
+        httpOnly: true
+    }
+};
+app.use(session(sessionConfig));
 
-app.get("/", async (req, res) => {
-    const entries = await Entry.find();
-    res.render("index", { entries });
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Populate Session:
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
 });
 
-app.post("/", async (req, res) => {
-    req.body.tags = tagsFormat(req.body.tags);
-    const entry = new Entry(req.body);
-    await entry.save();
-    res.redirect("/");
+// Routes
+app.use("/", entryRoutes);
+app.use("/", userRoutes);
+
+app.all("*", (req, res, next) => {
+    next(new ExpressError("Page Not found", 404));
 });
 
-app.put("/:id", async (req, res) => {
-    req.body.tags = tagsFormat(req.body.tags);
-    await Entry.findByIdAndUpdate(req.params.id, {...req.body}, { new: true });
-    res.redirect("/");
-});
-
-app.patch("/:id", async (req, res) => {
-    const entry = await Entry.findByIdAndUpdate(req.body.id, { "status" : req.body.newStatus });
-});
-
-app.delete("/:id", async (req, res) => {
-    const { id } = req.params;
-    await Entry.findByIdAndDelete(id);
-    res.redirect("/");
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message = "Oh no! Something went wrong";
+    res.status(statusCode).render("error", { err });
 });
 
 // App Listening

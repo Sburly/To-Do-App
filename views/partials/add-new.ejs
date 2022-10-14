@@ -3,6 +3,9 @@
         <h1>Add new To-Do</h1>
         <button data-close-button class="button--transparent button--close modal__close-button">&times;</button>
     </header>
+    <div class="container__flash">
+        <%- partial('flash') %>
+    </div>
     <form class="modal__body" action="/" method="post">
         <div class="modal__input-container container__title">
             <label class="modal__input__label" for="title">Title</label>
@@ -13,7 +16,7 @@
             <input class="modal__input" type="date" name="exDate" id="exDate">
         </div>
         <div class="modal__input-container container__description">
-            <label class="modal__input__label" for="description">Expiration Date</label>
+            <label class="modal__input__label" for="description">Description</label>
             <textarea class="modal__input" type="date" name="description" id="description" style="resize: none;"></textarea>
         </div>
         <div class="modal__input-container container__status">

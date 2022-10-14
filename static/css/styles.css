@@ -159,3 +159,36 @@ body {
 .dragging {
     opacity: 0.5;
 }
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--red);
+    margin: 5rem auto 0 auto;
+    padding: 2rem 3rem 3rem 3rem;
+    border: 2px solid var(--black);
+    border-radius: var(--br-bg);
+}
+
+.error__status {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.error__message {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.flash-error {
+    background: var(--error);
+    font-weight: 700;
+    color: var(--black);
+}
+
+.flash-success {
+    color: var(--success);
+    font-weight: 700;
+    color: var(--black);
+}

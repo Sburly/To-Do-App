@@ -1,11 +1,16 @@
 <nav class="navbar">
     <div class="logo__container">
-        <%- partial('svgs/check') %>
+        <a href="/">
+            <%- partial('svgs/check') %>
+        </a>
     </div>
     <div class="header-buttons__container">
         <a class="button--transparent header__button toggle-mode"><%- partial('svgs/moon') %></a>
-        <a class="button--transparent header__button">Register</a>
-        <a class="button--transparent header__button">Log in</button>
-        <a class="button--transparent header__button">Log out</a>
+        <% if(!currentUser) { %> 
+            <a class="button--transparent header__button" href="/register">Register</a>
+            <a class="button--transparent header__button" href="/login">Log in</a>
+        <% } else { %>
+            <a class="button--transparent header__button" href="/logout">Log out</a>
+        <% } %>
     </div>
 </nav>

@@ -45,10 +45,6 @@ draggables.forEach(draggable => {
 
     draggable.addEventListener("dragend", async () => {
         draggable.classList.remove("dragging");
-        // var formData = new FormData();
-        // formData.append('id', draggable.dataset.entry);
-        // formData.append('newStatus', draggable.parentElement.id);
-        // console.log(draggable.dataset.entry, draggable.parentElement.id);
         const requestOptions = {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
