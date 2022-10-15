@@ -45,17 +45,23 @@ draggables.forEach(draggable => {
 
     draggable.addEventListener("dragend", async () => {
         draggable.classList.remove("dragging");
+        const data = {
+            "id" : draggable.dataset.entry,
+            "newStatus": draggable.parentElement.id
+        }
         const requestOptions = {
             method: 'PATCH',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                id: draggable.dataset.entry,
-                newStatus: draggable.parentElement.id
-            })
+            body: JSON.stringify(data)
         };
-        await fetch(`/${draggable.dataset.entry}`, requestOptions)
-            .then((res) => res.json())
-            .catch(error => console.log(error));
+        await fetch("/", requestOptions)
+            .then(function(response) {
+                if(response.ok) return response.text();
+                throw new Error('Something went wrong.');
+            })
+            .then(function(text) {console.log('Request successful', text);})  
+            .catch(function(error) {console.log('Request failed', error);});
     });
 });
 

@@ -1,7 +1,9 @@
 const Entry = require("../models/entry");
 
 module.exports.renderHome = async (req, res) => {
-    for(let i of req.session.modifications) await Entry.findByIdAndUpdate(i[0], { "status" : i[1] });
+    if(req.session.modifications){
+        for(let i of req.session.modifications) await Entry.findByIdAndUpdate(i[0], { "status" : i[1] });
+    } else req.session.modifications = [];
     const entries = await Entry.find({ author: req.user._id });
     res.render("index", { entries });
 };
@@ -26,6 +28,7 @@ module.exports.updateEntry = (req, res) => {
     newArray.push([req.body.id, req.body.newStatus]);
     req.session.modifications = newArray;
     req.session.save();
+    return "Successful"
 };
 
 module.exports.deleteEntry = async (req, res) => {

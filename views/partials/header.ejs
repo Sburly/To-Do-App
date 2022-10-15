@@ -5,11 +5,11 @@
         </a>
     </div>
     <div class="header-buttons__container">
-        <a class="button--transparent header__button toggle-mode"><%- partial('svgs/moon') %></a>
         <% if(!currentUser) { %> 
             <a class="button--transparent header__button" href="/register">Register</a>
             <a class="button--transparent header__button" href="/login">Log in</a>
         <% } else { %>
+            <button data-modal-target="#addNewModal" class="main__add-new-button button button--transparent input">&plus;</button>
             <a class="button--transparent header__button" href="/logout">Log out</a>
         <% } %>
     </div>

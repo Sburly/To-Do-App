@@ -14,44 +14,6 @@ main {
     gap: 1rem;
 }
 
-.main__add-new-button {
-    font-size: 32px;
-    text-align: center;
-    background: var(--gradient);
-    color: var(--black);
-    width: 3.5rem;
-}
-
-.main__add-new-button:hover {
-    color: var(--white);
-    text-shadow: 1px 1px var(--black);
-}
-
-.main__search-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.search__input {
-    min-width: 30rem;
-    font-size: 28px;
-    border: 2px solid var(--black);
-    border-radius: var(--br-sm);
-}
-
-.search__input:hover {
-    margin: 0 0.5rem;
-}
-
-.search__button {
-    text-align: center;
-}
-
-.search-icon {
-    width: 35px;
-}
-
 /* Main Body */
 .main__body {
     position: relative;
@@ -65,7 +27,7 @@ main {
 
 .main__column {
     min-width: 27%;
-    min-height: 82vh;
+    min-height: 90vh;
     border: 2px solid var(--black);
     border-radius: var(--br-bg);
     display: flex;
@@ -115,7 +77,6 @@ main {
 
 .entry__button--delete {
     font-size: 24px;
-    margin-left: auto;
 }
 
 .entry__delete-form {

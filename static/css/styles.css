@@ -24,31 +24,6 @@
     --sidebar-width: 7rem;
 }
 
-:root.dark-mode {
-    --primary-color: #013655;
-    --secondary-color: #006151;
-    --gradient: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-    --error: #FF5C00;
-    --success: #00FF66;
-
-    --black: #F5F5F5;
-    --muted: #c5c5c6;
-    --white: #2E373B;
-
-    --red: #FF6666;
-    --yellow: #FFDD66;
-    --green: #66FF75;
-
-    --azure: #66F6FF;
-    --blue: #6691FF;
-    --purple: #BC66FF;
-
-    --br-bg: 10px;
-    --br-sm: 5px;
-
-    --transition: all 200ms ease-in-out;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--black);

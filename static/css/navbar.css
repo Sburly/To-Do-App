@@ -47,3 +47,17 @@ nav {
     scale: 1.1;
     text-shadow: 1px 1px var(--black);
 }
+
+.main__add-new-button {
+    font-size: 32px;
+    text-align: center;
+    background: var(--primary-color);
+    color: var(--black);
+    width: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.main__add-new-button:hover {
+    color: var(--white);
+    text-shadow: 1px 1px var(--black);
+}

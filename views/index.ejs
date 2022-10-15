@@ -1,12 +1,4 @@
 <% layout('layout') %>
-<%- partial("partials/add-new") %>
-<header class="main__header">
-    <button data-modal-target="#addNewModal" class="main__add-new-button button input">&plus;</button>
-    <form action="" class="main__search-bar">
-        <input type="search" class="search__input input">
-        <button class="button--transparent search__button input"><%- partial("partials/svgs/search") %></button>
-    </form>
-</header>
 <article class="main__body">
     <section class="main__column container to-do">
         <h1>To-Do</h1>
@@ -57,3 +49,5 @@
         </div>
     </section>
 </article>
+<script src="js/editModal.js"></script>
+<script src="js/addNewModal.js"></script>

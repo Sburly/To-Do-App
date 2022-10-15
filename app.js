@@ -11,6 +11,7 @@ const MongoDBStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const mongoSanitize = require("express-mongo-sanitize");
 // Imports
 const ExpressError = require("./utilities/ExpressError");
 const entryRoutes = require("./routes/entries");
@@ -39,6 +40,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => console.log("Database connected"));
+app.use(mongoSanitize({ replaceWith: "_" }));
 
 // Mongo Session
 const store = MongoDBStore.create({
