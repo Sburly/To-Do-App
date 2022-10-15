@@ -73,6 +73,7 @@ passport.deserializeUser(User.deserializeUser());
 // Populate Session:
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
+    res.locals.modifications = ["Hello"];
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();
